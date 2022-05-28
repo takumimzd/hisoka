@@ -1,5 +1,9 @@
 {
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    ":pinAllExceptPeerDependencies",
+    ":preserveSemverRanges"
+  ],
+  "timezone": "Asia/Tokyo",
+  "schedule": ["after 9am on monday", "before 12am on monday"]
 }
