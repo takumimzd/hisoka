@@ -1,6 +1,6 @@
-export type Book = {
+export type BookReq = {
   id: string;
-  image_url: string;
+  image_src: string;
   title: string;
   description: string;
   recommend_level: number;

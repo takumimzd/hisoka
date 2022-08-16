@@ -1,18 +1,21 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  PrimaryColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
+import { User } from './user.entity';
 
 @Entity()
 export class Book {
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   id: string;
 
   @Column()
-  image_url: string;
+  image_src: string;
 
   @Column()
   title: string;
@@ -22,6 +25,14 @@ export class Book {
 
   @Column()
   recommend_level: number;
+
+  @Column()
+  user_id: string;
+  // @ManyToOne(() => User, {
+  //   eager: false,
+  // })
+  // @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+  // user_id?: User;
 
   @CreateDateColumn()
   readonly createdAt?: Date;

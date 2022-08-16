@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { BookService } from '../service/book.service';
-import { Book } from '../dto/book.dto';
+import { BookReq } from '../dto/book.dto';
 
 @Controller('book')
 export class BookController {
@@ -12,7 +12,7 @@ export class BookController {
   }
 
   @Post('create')
-  create(@Body() req: Book) {
-    this.bookService.create(req);
+  create(@Body() req: BookReq) {
+    return this.bookService.create(req);
   }
 }

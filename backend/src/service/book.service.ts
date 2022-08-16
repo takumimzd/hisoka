@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { BookReq } from '../dto/book.dto';
 import { Book } from '../entity/book.entity';
 
 @Injectable()
@@ -14,7 +15,7 @@ export class BookService {
     return 'hoge';
   }
 
-  create(book: Book) {
-    this.bookRepository.save(book);
+  create(book: BookReq) {
+    return this.bookRepository.save(book);
   }
 }
