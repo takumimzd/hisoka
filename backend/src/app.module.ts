@@ -2,23 +2,21 @@ import { Module } from '@nestjs/common';
 import { AppController } from '../practice/app.controller';
 import { AppService } from '../practice/app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ItemModule } from '../practice/item.module';
 import { BookModule } from './module/book.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['.env'],
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      // host: process.env.DB_HOST,
-      // port: parseInt(process.env.DB_PORT),
-      // username: process.env.DB_USER,
-      // password: process.env.DB_PASSWORD,
-      // database: process.env.DB_NAME,
       host: 'localhost',
       port: 3306,
-      username: 'root',
-      password: 'sakamo51',
-      database: 'hisoka_db',
+      username: process.env.USER_NAME,
+      password: process.env.USER_PASSWORD,
+      database: process.env.USER_DATABASE,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
